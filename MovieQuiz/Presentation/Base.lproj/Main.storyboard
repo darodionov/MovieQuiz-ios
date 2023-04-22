@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aya-ZS-8QQ">
-                                <rect key="frame" x="20" y="57" width="335" height="731"/>
+                                <rect key="frame" x="20" y="54" width="335" height="731"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bph-O8-nkz">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="23.666666666666668"/>
@@ -121,16 +121,22 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="oQn-O6-3Pg">
+                                <rect key="frame" x="177.66666666666666" y="396" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="YP Black (iOS)"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aya-ZS-8QQ" secondAttribute="trailing" constant="20" id="7i7-Vu-jlf"/>
+                            <constraint firstItem="oQn-O6-3Pg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7ro-Uu-co9"/>
                             <constraint firstItem="aya-ZS-8QQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ogq-SM-XL4"/>
                             <constraint firstItem="aya-ZS-8QQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="k5t-t2-oUz"/>
+                            <constraint firstItem="oQn-O6-3Pg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tcx-ll-Hxu"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="oQn-O6-3Pg" id="ScI-6E-uG6"/>
                         <outlet property="counterLabel" destination="EfI-yl-9wT" id="JZb-3W-oqQ"/>
                         <outlet property="imageView" destination="60D-c9-JmZ" id="LuV-ED-Jlm"/>
                         <outlet property="noButton" destination="WcP-7J-1Hj" id="6Si-Vq-HBL"/>
