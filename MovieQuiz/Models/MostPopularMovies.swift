@@ -9,9 +9,19 @@ struct MostPopularMovie: Codable {
     let rating: String
     let imageURL: URL
     
+    var resizedImageURL: URL {
+        let urlString = imageURL.absoluteString
+        let imageURLString = urlString.components(separatedBy: "._")[0] + "._V0_UX600_.jpg"
+        
+        guard let newURL = URL(string: imageURLString) else {
+            return imageURL
+        }
+        return newURL
+    }
+    
     private enum CodingKeys: String, CodingKey {
-        case title = "fulltitle"
-        case rating = "imDBRating"
+        case title = "fullTitle"
+        case rating = "imDbRating"
         case imageURL = "image"
     }
     

@@ -12,7 +12,6 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     private var currentQuestionNumber: Int = 0
     private var correctAnswers: Int = 0
     private var questionFactory: QuestionFactoryProtocol?
-    private var moviesloader: MoviesLoading
     private var currentQuestion: QuizQuestion?
     private var alertPresenter: ShowScreenProtocol?
     private var statisticService: StatisticService?
@@ -20,8 +19,8 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        moviesloader = MoviesLoader()
-        questionFactory = QuestionFactory(moviesLoader: moviesloader, delegate: self)
+        let moviesLoader = MoviesLoader()
+        questionFactory = QuestionFactory(moviesLoader: moviesLoader, delegate: self)
         alertPresenter = AlertPresenter(controller: self)
         statisticService = StatisticServiceImplementation()
         showLoadingIndicator()

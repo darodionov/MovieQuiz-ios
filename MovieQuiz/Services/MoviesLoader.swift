@@ -7,7 +7,7 @@ protocol MoviesLoading {
 struct MoviesLoader: MoviesLoading {
     private let networkClient = NetworkClient()
     private var mostPopularURL: URL {
-        guard let url = URL(string: "https://imdb-api.com/en/API/Top250Movies/k_kiwxbi4y") else {
+        guard let url = URL(string: "https://imdb-api.com/en/API/Top250Movies/k_sul6361w") else {
             preconditionFailure("Unable to construct mostPopularMoviesUrl")
         }
         return url
