@@ -105,13 +105,6 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         alertPresenter?.showScreen(model: alertModel)
     }
     
-    private func convert(model: QuizQuestion) -> QuizStepViewModel {
-        return QuizStepViewModel(
-            image: UIImage(data: model.image) ?? UIImage(),
-            question: model.text,
-            questionNumber: "\(currentQuestionNumber + 1)/\(questionsAmount)")
-    }
-    
     private func showAnswerResult(isCorrect: Bool) {
         if isCorrect {
             correctAnswers += 1
@@ -159,5 +152,12 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     private func enableButtons(_ enableButtons: Bool) {
         yesButton.isEnabled = enableButtons
         noButton.isEnabled = enableButtons
+    }
+    
+    private func convert(model: QuizQuestion) -> QuizStepViewModel {
+        return QuizStepViewModel(
+            image: UIImage(data: model.image) ?? UIImage(),
+            question: model.text,
+            questionNumber: "\(currentQuestionNumber + 1)/\(questionsAmount)")
     }
 }
