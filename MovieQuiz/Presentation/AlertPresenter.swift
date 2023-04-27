@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class AlertPresenter: ShowScreenProtocol {
+final class AlertPresenter: ShowScreenProtocol {
     weak var controller: UIViewController?
     
     init(controller: UIViewController? = nil) {

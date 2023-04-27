@@ -9,26 +9,26 @@ import XCTest
 
 final class MovieQuizUITests: XCTestCase {
     var app: XCUIApplication!
-
+    
     override func setUpWithError() throws {
         try super.setUpWithError()
         app = XCUIApplication()
         app.launch()
-
+        
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         app.terminate()
         app = nil
     }
-
-//    func testScreenCast() throws {
-//        app.buttons["Нет"].tap()
-//
-//    }
+    
+    //    func testScreenCast() throws {
+    //        app.buttons["Нет"].tap()
+    //
+    //    }
     
     func testYesButton() throws {
         sleep(3)
@@ -43,14 +43,14 @@ final class MovieQuizUITests: XCTestCase {
         let endPosterData = endPoster.screenshot().pngRepresentation
         
         let indexLable = app.staticTexts["Index"]
-    
+        
         XCTAssertTrue(beginPoster.exists)
         XCTAssertTrue(endPoster.exists)
         XCTAssertFalse(beginPoster == endPoster)
         XCTAssertNotEqual(beginPosterData, endPosterData)
         XCTAssertEqual(indexLable.label, "2/10")
     }
-
+    
     func testNoButton() throws {
         sleep(3)
         let beginPoster = app.images["Poster"]
@@ -70,7 +70,7 @@ final class MovieQuizUITests: XCTestCase {
         XCTAssertNotEqual(beginPosterData, endPosterData)
         XCTAssertEqual(indexLable.label, "2/10")
     }
-
+    
     func testAlert() throws {
         let buttons = [app.buttons["Yes"], app.buttons["No"]]
         for _ in 1...10 {
