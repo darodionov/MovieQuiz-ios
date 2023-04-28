@@ -9,11 +9,21 @@ import XCTest
 
 final class MovieQuizUITests: XCTestCase {
     var app: XCUIApplication!
+    var buttons: [XCUIElement]?
+    
+    func pushButtons() {
+        for _ in 1...10 {
+            sleep(3)
+            let button = buttons?.randomElement()
+            button?.tap()
+        }
+    }
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         app = XCUIApplication()
         app.launch()
+        buttons = [app.buttons["Yes"], app.buttons["No"]]
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -72,19 +82,29 @@ final class MovieQuizUITests: XCTestCase {
     }
     
     func testAlert() throws {
-        let buttons = [app.buttons["Yes"], app.buttons["No"]]
-        for _ in 1...10 {
-            sleep(2)
-            let button = buttons.randomElement()
-            button?.tap()
-        }
-        sleep(2)
+        pushButtons()
+        sleep(3)
         
         let alert = app.alerts["Game results"]
         
-        print(alert.buttons.firstMatch.label)
+        //print(alert.buttons.firstMatch.label)
         XCTAssertTrue(alert.exists)
         XCTAssertTrue(alert.label == "Этот раунд окончен!")
         XCTAssertTrue(alert.buttons.firstMatch.label == "Сыграть еще раз")
+    }
+    
+    func testAlertDismiss() throws {
+        pushButtons()
+        sleep(3)
+        
+        let alert = app.alerts["Game results"]
+        alert.buttons.firstMatch.tap()
+        sleep(3)
+        
+        let indexLabel = app.staticTexts["Index"]
+        
+        XCTAssertFalse(alert.exists)
+        XCTAssertTrue(indexLabel.label == "1/10")
+        
     }
 }
